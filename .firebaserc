@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-lists-app": {
+      "hosting": {
+        "lists-ng": [
+          "ng-lists-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-lists-app"
+  }
+}

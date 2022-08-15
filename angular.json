@@ -100,6 +100,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "lists-ng:build:production",
+            "firebaseProject": "ng-lists-app",
+            "firebaseHostingSite": "ng-lists-app"
+          }
         }
       }
     }
