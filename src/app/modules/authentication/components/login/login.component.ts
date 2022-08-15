@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import {FirebaseAuthService} from "../../../../shared";
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  public form: UntypedFormGroup | undefined;
+
+  constructor(private fb: UntypedFormBuilder,
+              private firebaseAuth: FirebaseAuthService) { }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    })
   }
 
+  login() {
+    if (this.form) {
+      this.firebaseAuth.signIn(this.form.value.email, this.form.value.password).subscribe()
+    }
+  }
 }

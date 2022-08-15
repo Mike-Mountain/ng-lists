@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {LayoutComponent} from "./components/layout/layout.component";
+import {LayoutComponent} from "./components";
 import {AppRoutingModule} from "../app-routing.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {environment} from "../../environments/environment";
 import {AkitaNgDevtools} from "@datorama/akita-ngdevtools";
 import {AkitaNgRouterStoreModule} from "@datorama/akita-ng-router-store";
-import {MaterialModule} from "../modules/material/material.module";
+import {MaterialModule} from "../modules";
 
 @NgModule({
   declarations: [LayoutComponent],
