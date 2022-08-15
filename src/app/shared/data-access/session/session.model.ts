@@ -1,9 +1,13 @@
 export interface Session {
   user: User;
-  token: string;
+  // token: string;
 }
 
 export interface User {
-  username: string;
   email: string;
+  username: string;
+  groupsCreated: string[];
+  groupsMember: string[];
+  listsCreator: string[];
+  listsEditor: string[];
 }

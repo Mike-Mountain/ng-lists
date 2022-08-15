@@ -9,7 +9,7 @@ export class SessionQuery extends Query<Session> {
     super(store);
   }
 
-  getToken(): string {
-    return this.store.getValue().token;
+  isLoggedIn() {
+    return this.store.getValue().user;
   }
 }
