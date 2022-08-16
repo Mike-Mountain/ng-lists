@@ -10,18 +10,25 @@
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>lists-ng</span>
-    </mat-toolbar>
+  <div class="dash-background">
+    <div class="dash-background-content">
+      <!--TODO: Put this in a component-->
+      <h1>Lists</h1>
+      <input class="search" type="text" placeholder="search for a list...">
+    </div>
+  </div>
+  <div class="content">
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
+    <div class="bottom-actions">
+      <button mat-mini-fab color="accent">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button mat-fab color="accent" class="primary-button">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-mini-fab color="accent" (click)="drawer.open()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </div>
 </mat-sidenav-container>
