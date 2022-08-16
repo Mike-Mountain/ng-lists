@@ -1,8 +1,12 @@
-<mat-card *ngIf="list" class="display-card">
-  <img alt="list icon" [src]="list.icon ? list.icon : 'assets/images/default_icon.jpg'" class="list-icon">
+<mat-card *ngIf="data" class="display-card">
+  <img alt="list icon" [src]="data.icon ? data.icon : 'assets/images/default_icon.jpg'" class="list-icon">
   <div class="details">
-    <h1 class="title">{{list.name}}</h1>
-    <p class="items">{{list.items.length}} items in this list</p>
+    <h1 class="title">{{data.name}}</h1>
+    <p class="items" *ngIf="list">{{list.items.length}} items in this list</p>
+    <p class="items" *ngIf="group">{{group.members.length}} users in this group</p>
   </div>
-  <small class="date">{{date | date : 'hh:mm a - d MMM y'}}</small>
+  <div class="created_details">
+    <small class="date">{{date | date : 'hh:mm a - d MMM y'}}</small>
+    <small class="creator" *ngIf="group">created by {{(createdBy | async)?.username}}</small>
+  </div>
 </mat-card>

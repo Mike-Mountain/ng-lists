@@ -2,7 +2,7 @@ export interface List {
   name: string;
   icon: string;
   createdBy: string;
-  createdOn: Date;
+  createdOn: any;
   group: string;
   editors: string[];
   items: string[];

@@ -4,7 +4,7 @@
     <ng-container *ngFor="let list$ of listsCreated">
       <div class="my-2">
         <app-list-display-card
-          [list]="list$ | async"
+          [data]="list$ | async"
         ></app-list-display-card>
       </div>
     </ng-container>
@@ -15,20 +15,20 @@
     <ng-container *ngFor="let list$ of listsEditor">
       <div class="my-2">
         <app-list-display-card
-          [list]="list$ | async"
+          [data]="list$ | async"
         ></app-list-display-card>
       </div>
     </ng-container>
   </div>
 
-<!--  <div class="mt-4">-->
-<!--    <h1 class="mb-1">Groups:</h1>-->
-<!--    <ng-container *ngFor="let group$ of groups">-->
-<!--      <div class="my-2">-->
-<!--        <app-list-display-card-->
-<!--          [list]="group$ | async"-->
-<!--        ></app-list-display-card>-->
-<!--      </div>-->
-<!--    </ng-container>-->
-<!--  </div>-->
+  <div class="mt-4">
+    <h1 class="mb-1">Groups:</h1>
+    <ng-container *ngFor="let group$ of groups">
+      <div class="my-2">
+        <app-list-display-card
+          [data]="group$ | async"
+        ></app-list-display-card>
+      </div>
+    </ng-container>
+  </div>
 </section>
