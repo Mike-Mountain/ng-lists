@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {FirebaseAuthService} from "../../../../shared";
 import {Router} from "@angular/router";
+import {LoadingService} from "../../../../shared/ui/services/loading.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: UntypedFormBuilder,
               private firebaseAuth: FirebaseAuthService,
-              private router: Router) { }
+              private router: Router,
+              private loadingService: LoadingService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -25,9 +27,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.form) {
+      this.loadingService.openLoader();
       this.firebaseAuth.signIn(this.form.value.email, this.form.value.password).subscribe((data) => {
-        // console.log(data);
-        // this.router.navigate(['/'])
+        this.router.navigate(['/']).then(() => this.loadingService.closeLoader())
       })
     }
   }

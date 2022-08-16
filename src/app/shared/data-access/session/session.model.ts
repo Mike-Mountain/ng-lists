@@ -6,8 +6,8 @@ export interface Session {
 export interface User {
   email: string;
   username: string;
-  groupsCreated: string[];
-  groupsMember: string[];
-  listsCreator: string[];
-  listsEditor: string[];
+  groups_created: string[];
+  groups_member: string[];
+  lists_creator: string[];
+  lists_editor: string[];
 }
