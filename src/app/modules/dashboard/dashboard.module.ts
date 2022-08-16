@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardContainerComponent } from './components/dashboard-container/dashboard-container.component';
-import {ListDisplayCardComponent} from "../../shared";
+import {ListDisplayCardComponent, SpinnerComponent} from "../../shared";
+import { ListDetailsComponent } from './components/list-details/list-details.component';
+import {RouterModule} from "@angular/router";
 
 
 
 @NgModule({
   declarations: [
-    DashboardContainerComponent
+    DashboardContainerComponent,
+    ListDetailsComponent
   ],
-    imports: [
-        CommonModule,
-        ListDisplayCardComponent
-    ]
+  imports: [
+    CommonModule,
+    ListDisplayCardComponent,
+    RouterModule,
+    SpinnerComponent
+  ]
 })
 export class DashboardModule { }

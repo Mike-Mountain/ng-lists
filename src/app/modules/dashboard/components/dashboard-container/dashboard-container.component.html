@@ -1,34 +1,40 @@
 <section class="dashboard">
   <div class="mb-1">
     <h1 class="mb-1">My Lists:</h1>
+    <app-spinner [isSingleUse]="true" [isLoading]="loadingStates.listsCreated" size="medium">
       <ng-container *ngFor="let list of listsCreated | async">
-        <div class="my-2">
+        <a class="my-2 display-inline-block w-100" [routerLink]="'/list/' + list.id">
           <app-list-display-card
             [data]="list"
           ></app-list-display-card>
-        </div>
+        </a>
       </ng-container>
+    </app-spinner>
   </div>
 
   <div class="mt-4 mb-1">
     <h1 class="mb-1">Group Lists:</h1>
+    <app-spinner [isSingleUse]="true" [isLoading]="loadingStates.listsCreated" size="medium">
       <ng-container *ngFor="let list of listsEditor | async">
-        <div class="my-2">
+        <a class="my-2 display-inline-block w-100" [routerLink]="'/list/' + list.id">
           <app-list-display-card
             [data]="list"
           ></app-list-display-card>
-        </div>
+        </a>
       </ng-container>
+    </app-spinner>
   </div>
 
   <div class="mt-4 mb-5">
     <h1 class="mb-1">Groups:</h1>
+    <app-spinner [isSingleUse]="true" [isLoading]="loadingStates.listsCreated" size="medium">
       <ng-container *ngFor="let group of groups | async">
-        <div class="my-2">
+        <a class="my-2 display-inline-block w-100" [routerLink]="'/group/' + group.id">
           <app-list-display-card
             [data]="group"
           ></app-list-display-card>
-        </div>
+        </a>
       </ng-container>
+    </app-spinner>
   </div>
 </section>

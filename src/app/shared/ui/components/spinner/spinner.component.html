@@ -1,8 +1,13 @@
-<div class="spinner-box">
-  <div class="configure-border-1">
-    <div class="configure-core"></div>
+<ng-container *ngIf="isLoading || !isSingleUse">
+  <div class="spinner-box" [class]="'spinner-' + size">
+    <div class="configure-border-1" [class]="'border-' + size">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2" [class]="'border-2-' + size">
+      <div class="configure-core"></div>
+    </div>
   </div>
-  <div class="configure-border-2">
-    <div class="configure-core"></div>
-  </div>
-</div>
+</ng-container>
+<ng-container *ngIf="!isLoading && isSingleUse">
+  <ng-content></ng-content>
+</ng-container>

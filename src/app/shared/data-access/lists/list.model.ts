@@ -1,6 +1,7 @@
 import {CreatedBy} from "../models/created-by.model";
 
 export interface List {
+  id: string;
   name: string;
   icon: string;
   createdBy: CreatedBy;

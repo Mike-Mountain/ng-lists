@@ -1,15 +1,26 @@
 .spinner-box {
-  width: 300px;
-  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
 }
 
+.spinner-large {
+  width: 300px;
+  height: 300px;
+}
+
+.spinner-medium {
+  width: 150px;
+  height: 150px;
+}
+
+.spinner-small {
+  width: 75px;
+  height: 75px;
+}
+
 .configure-border-1 {
-  width: 115px;
-  height: 115px;
   padding: 3px;
   position: absolute;
   display: flex;
@@ -20,16 +31,40 @@
 }
 
 .configure-border-2 {
-  width: 115px;
-  height: 115px;
   padding: 3px;
-  left: -115px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #ff3c00;
   transform: rotate(45deg);
   animation: configure-xclockwise 2s ease-in-out 0s infinite alternate;
+}
+
+.border-large, .border-2-large {
+  width: 115px;
+  height: 115px;
+}
+
+.border-2-large {
+  left: -115px;
+}
+
+.border-medium, .border-2-medium {
+  width: 57px;
+  height: 57px;
+}
+
+.border-2-medium {
+  left: 57px;
+}
+
+.border-small, .border-2-small {
+  width: 28px;
+  height: 28px;
+}
+
+.border-2-small {
+  left: -28px;
 }
 
 .configure-core {
