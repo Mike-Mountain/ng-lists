@@ -23,7 +23,8 @@ export class FirebaseAuthService {
       }),
       tap((user) => {
         this.sessionService.login({user});
-        localStorage.setItem('user', JSON.stringify(user));
+        // TODO: Find a better way to manage session storage
+        // localStorage.setItem('user', JSON.stringify(user));
       })
     )
   }
