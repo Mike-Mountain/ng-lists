@@ -20,7 +20,8 @@ export class FirebaseAuthService {
         return doc.valueChanges();
       }),
       tap((user) => {
-        this.sessionService.login({user})
+        this.sessionService.login({user});
+        localStorage.setItem('user', JSON.stringify(user));
       })
     )
   }

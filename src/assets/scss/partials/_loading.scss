@@ -1,9 +1,10 @@
 .spinner-backdrop {
-  background: rgba(255, 255, 255, .9);
+  background: rgba(255, 255, 255, .8);
 }
 
 .spinner-panel .mat-dialog-container {
   max-width: 100%;
   box-shadow: none;
   background: transparent;
+  overflow: hidden;
 }
