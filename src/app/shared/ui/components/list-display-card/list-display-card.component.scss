@@ -1,0 +1,16 @@
+.display-card {
+  background: var(--accent);
+  color: white;
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+}
+
+.list-icon {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+
+.details {
+  margin-left: .5rem;
+}
