@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.form) {
       this.loadingService.openLoader();
-      this.firebaseAuth.signIn(this.form.value.email, this.form.value.password).subscribe((data) => {
+      this.firebaseAuth.signIn(this.form.value.email, this.form.value.password).subscribe(() => {
         this.router.navigate(['/']).then(() => this.loadingService.closeLoader())
       })
     }

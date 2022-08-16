@@ -1,1 +1,31 @@
-<p>register works!</p>
+<section class="authentication login" *ngIf="form">
+  <div class="logo"></div>
+  <h3 class="text-center">Register</h3>
+  <hr class="w-60 mx-auto">
+  <form [formGroup]="form" class="auth-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" formControlName="confirmPassword">
+    </mat-form-field>
+
+    <div class="auth-form-actions">
+      <button mat-raised-button color="accent" (click)="register()">Register</button>
+      <a routerLink="/authentication/login" class="mt-2">login</a>
+    </div>
+  </form>
+</section>
