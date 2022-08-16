@@ -7,9 +7,10 @@ import {environment} from "../../environments/environment";
 import {AkitaNgDevtools} from "@datorama/akita-ngdevtools";
 import {AkitaNgRouterStoreModule} from "@datorama/akita-ng-router-store";
 import {MaterialModule} from "../modules";
+import { DashHeaderComponent } from './components/dash-header/dash-header.component';
 
 @NgModule({
-  declarations: [LayoutComponent],
+  declarations: [LayoutComponent, DashHeaderComponent],
   imports: [
     CommonModule,
     AppRoutingModule,

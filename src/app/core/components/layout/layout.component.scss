@@ -41,10 +41,15 @@
   border-top-right-radius: 15px;
 }
 
+.routed {
+  height: 87%;
+  overflow: auto;
+}
+
 .bottom-actions {
-  position: absolute;
-  bottom: 1.75rem;
   width: 100%;
+  height: 12%;
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -54,15 +59,5 @@
   }
   .large-button {
     margin-bottom: 1rem;
-  }
-}
-
-.large-button.mat-fab {
-  height: 80px;
-  width: 80px;
-  .mat-icon {
-    height: 42px;
-    width: 42px;
-    font-size: 42px;
   }
 }

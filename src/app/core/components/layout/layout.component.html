@@ -1,8 +1,8 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#">Link 1</a>
@@ -12,21 +12,21 @@
   </mat-sidenav>
   <div class="dash-background">
     <div class="dash-background-content">
-      <!--TODO: Put this in a component-->
-      <h1>Lists</h1>
-      <input class="search" type="text" placeholder="search for a list...">
+      <app-dash-header></app-dash-header>
     </div>
   </div>
   <div class="content">
-    <router-outlet></router-outlet>
+    <div class="routed">
+      <router-outlet></router-outlet>
+    </div>
     <div class="bottom-actions">
-      <button mat-fab color="accent">
+      <button mat-mini-fab color="accent">
         <mat-icon>home</mat-icon>
       </button>
-      <button mat-fab color="accent" class="large-button">
+      <button mat-fab color="accent" class="mb-2">
         <mat-icon>add</mat-icon>
       </button>
-      <button mat-fab color="accent" (click)="drawer.open()">
+      <button mat-mini-fab color="accent" (click)="drawer.open()">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
