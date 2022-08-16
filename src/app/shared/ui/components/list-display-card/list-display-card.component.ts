@@ -1,8 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MaterialModule} from "../../../../modules";
-import {Group, List, User} from "../../../data-access";
-import {Observable} from "rxjs";
+import {Group, List} from "../../../data-access";
 
 @Component({
   selector: 'app-list-display-card',
@@ -14,7 +13,6 @@ import {Observable} from "rxjs";
 export class ListDisplayCardComponent implements OnInit, OnChanges {
 
   @Input() data: List | Group | undefined | null;
-  public createdBy: Observable<User> | undefined;
   public group: Group | undefined;
   public list: List | undefined;
   public date: Date = new Date();
@@ -27,7 +25,6 @@ export class ListDisplayCardComponent implements OnInit, OnChanges {
       this.date = this.data.createdOn.toDate();
       if ('members' in this.data) {
         this.group = this.data;
-        this.createdBy = this.data.createdBy as unknown as Observable<User>;
       } else {
         this.list = this.data
       }

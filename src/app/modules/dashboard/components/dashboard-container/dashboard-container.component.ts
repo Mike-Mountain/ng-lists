@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Group, List, SessionQuery} from "../../../../shared";
-import {Observable} from "rxjs";
-import {DashboardService} from "../../services/dashboard.service";
-import {map} from "rxjs/operators";
+import {Group, GroupsService, List, ListsService, SessionQuery} from "../../../../shared";
+import {forkJoin, Observable, zip} from "rxjs";
+import {LoadingService} from "../../../../shared/ui/services/loading.service";
 
 @Component({
   selector: 'app-dashboard-container',
@@ -11,25 +10,20 @@ import {map} from "rxjs/operators";
 })
 export class DashboardContainerComponent implements OnInit {
 
-  public listsCreated: Observable<List>[] = [];
-  public listsEditor: Observable<List>[] = [];
-  public groups: Observable<Group>[] = [];
+  public listsCreated: Observable<List[]> | undefined;
+  public listsEditor: Observable<List[]> | undefined;
+  public groups: Observable<Group[]> | undefined;
 
   constructor(private sessionQuery: SessionQuery,
-              private dashboardService: DashboardService) { }
+              private listService: ListsService,
+              private groupsService: GroupsService,
+              private loadingService: LoadingService) { }
 
   ngOnInit(): void {
     this.sessionQuery.select('user').subscribe(user => {
-      this.listsCreated = this.dashboardService.getReferenceData('lists', user.lists_creator) as Observable<List>[];
-      this.listsEditor = this.dashboardService.getReferenceData('lists', user.lists_editor) as Observable<List>[];
-      this.groups = this.dashboardService.getReferenceData('groups', user.groups_member).map(group => {
-        return group.pipe(
-          map((details: any) => {
-            details.createdBy = this.dashboardService.getUsername(details.createdBy.id);
-            return details;
-          })
-        )
-      }) as Observable<Group>[];
+      this.listsCreated = this.listService.getMultipleListsByIds(user.listsCreated);
+      this.listsEditor = this.listService.getMultipleListsByIds(user.listsEditor);
+      this.groups = this.groupsService.getMultipleGroupsByIds(user.groupsMember);
     })
   }
 

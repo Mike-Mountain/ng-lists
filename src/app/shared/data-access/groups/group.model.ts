@@ -1,6 +1,8 @@
+import {CreatedBy} from "../models/created-by.model";
+
 export interface Group {
   name: string;
-  createdBy: string;
+  createdBy: CreatedBy;
   createdOn: any;
   icon: string;
   lists: string[];

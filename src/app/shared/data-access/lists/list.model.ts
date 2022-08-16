@@ -1,7 +1,9 @@
+import {CreatedBy} from "../models/created-by.model";
+
 export interface List {
   name: string;
   icon: string;
-  createdBy: string;
+  createdBy: CreatedBy;
   createdOn: any;
   group: string;
   editors: string[];

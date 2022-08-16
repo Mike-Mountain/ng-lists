@@ -7,6 +7,6 @@
   </div>
   <div class="created_details">
     <small class="date">{{date | date : 'hh:mm a - d MMM y'}}</small>
-    <small class="creator" *ngIf="group">created by {{(createdBy | async)?.username}}</small>
+    <small class="creator" *ngIf="group">created by {{group.createdBy.username}}</small>
   </div>
 </mat-card>

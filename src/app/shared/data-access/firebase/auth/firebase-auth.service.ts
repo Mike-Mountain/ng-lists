@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {forkJoin, from, Observable, switchMap, tap, zip} from "rxjs";
-import {createUser, SessionService, User} from "../../session";
+import {from, Observable, switchMap, tap} from "rxjs";
+import {SessionService} from "../../session";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Injectable({
@@ -20,9 +20,8 @@ export class FirebaseAuthService {
         return doc.valueChanges();
       }),
       tap((user) => {
-        const createdUser = createUser(user);
-        this.sessionService.login({user: createdUser});
-        localStorage.setItem('user', JSON.stringify(createdUser));
+        this.sessionService.login({user});
+        localStorage.setItem('user', JSON.stringify(user));
       })
     )
   }

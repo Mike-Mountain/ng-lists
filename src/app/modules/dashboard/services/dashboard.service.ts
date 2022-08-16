@@ -9,11 +9,7 @@ export class DashboardService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  public getReferenceData(collection: string, ids: string[]) {
-    return ids.map(id => this.firestore.doc(`${collection}/${id}`).valueChanges());
-  }
-
-  public getUsername(userId: string): Observable<string> {
-    return this.firestore.doc(`users/${userId}`).valueChanges() as Observable<string>;
+  public getReferenceData<T>(ids: string[]) {
+    return ids.map(id => this.firestore.doc(id).valueChanges()) as Observable<T>[];
   }
 }
