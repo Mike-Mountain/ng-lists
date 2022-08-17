@@ -16,7 +16,7 @@ export class ListsService {
   }
 
   getMultipleListsByIds(listIds: string[]): Observable<List[]> {
-    return (zip(listIds.map(id => this.firestore.doc(id).valueChanges())) as Observable<List[]>).pipe(tap((lists) => this.listsStore.update(lists)))
+    return (zip(listIds.map(id => this.firestore.doc(id).valueChanges())) as Observable<List[]>).pipe(tap((lists) => this.listsStore.upsertMany(lists)))
   }
 
 }
