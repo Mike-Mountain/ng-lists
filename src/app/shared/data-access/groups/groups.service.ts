@@ -12,6 +12,6 @@ export class GroupsService {
   }
 
   public getMultipleGroupsByIds(groupIds: string[]) {
-    return (zip(groupIds.map(id => this.firestore.doc(id).valueChanges())) as Observable<Group[]>).pipe(tap((groups) => this.groupsStore.update(groups)));
+    return (zip(groupIds.map(id => this.firestore.doc(id).valueChanges())) as Observable<Group[]>).pipe(tap((groups) => this.groupsStore.upsertMany(groups)));
   }
 }

@@ -4,6 +4,8 @@ import { DashboardContainerComponent } from './components/dashboard-container/da
 import {ListDisplayCardComponent, SpinnerComponent} from "../../shared";
 import { ListDetailsComponent } from './components/list-details/list-details.component';
 import {RouterModule} from "@angular/router";
+import {MaterialModule} from "../material/material.module";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -12,11 +14,13 @@ import {RouterModule} from "@angular/router";
     DashboardContainerComponent,
     ListDetailsComponent
   ],
-  imports: [
-    CommonModule,
-    ListDisplayCardComponent,
-    RouterModule,
-    SpinnerComponent
-  ]
+    imports: [
+        CommonModule,
+        ListDisplayCardComponent,
+        RouterModule,
+        SpinnerComponent,
+        MaterialModule,
+        FormsModule
+    ]
 })
 export class DashboardModule { }

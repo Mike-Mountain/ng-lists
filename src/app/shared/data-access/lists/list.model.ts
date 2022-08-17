@@ -8,10 +8,10 @@ export interface List {
   createdOn: any;
   group: string;
   editors: string[];
-  items: string[];
+  items: ListItem[];
 }
 
 export interface ListItem {
   name: string;
-  isComplete: string;
+  isComplete: boolean;
 }

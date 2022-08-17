@@ -1,1 +1,27 @@
-<p>list-details works!</p>
+<section class="list-details" *ngIf="list">
+  <div class="h-90">
+    <h1 class="text-center">List Items</h1>
+    <ng-container *ngFor="let item of list.items">
+      <mat-checkbox
+        color="accent"
+        class="list-item-check"
+        matRipple
+        matRippleColor="primary"
+        (change)="updateItemStatus(item, $event)"
+        (touchstart)="startTouchTimer()"
+        (touchend)="endTouchTimer()"
+      >
+        {{item.name}}
+      </mat-checkbox>
+    </ng-container>
+  </div>
+  <div class="h-10 flex-between">
+    <mat-form-field appearance="outline" class="w-85">
+      <mat-label>Add Item</mat-label>
+      <input matInput type="text" class="w-100" [(ngModel)]="newItem">
+    </mat-form-field>
+    <button mat-raised-button color="accent" class="w-10 h-80 flex-center" [disabled]="!newItem" (click)="addItem()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</section>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ListsQuery} from "../../../../shared";
-import {HashMap} from "@datorama/akita";
+import {List, ListItem, ListsQuery} from "../../../../shared";
+import {MatCheckboxChange} from "@angular/material/checkbox";
+import {interval, Observable, timer} from "rxjs";
 
 @Component({
   selector: 'app-list-details',
@@ -10,14 +11,44 @@ import {HashMap} from "@datorama/akita";
 })
 export class ListDetailsComponent implements OnInit {
 
+  public list: List | undefined;
+  public newItem = '';
+  private timer$ = timer(1000);
+  private time = 0;
+
   constructor(private route: ActivatedRoute,
               private listsQuery: ListsQuery) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log(this.listsQuery.getEntity(params['id']));
-      console.log(params);
+      const list = this.listsQuery.getEntity(params['id']);
+      if (list) {
+        this.list = JSON.parse(JSON.stringify(list));
+      }
     })
   }
 
+  updateItemStatus(item: ListItem, event: MatCheckboxChange) {
+    item.isComplete = event.checked;
+    this.sortItems();
+  }
+
+  addItem() {
+    this.list?.items.push({name: this.newItem, isComplete: false});
+    this.sortItems();
+    this.newItem = '';
+  }
+
+  sortItems() {
+    if (this.list) {
+      this.list.items.sort((itemA, itemB) => {
+        return (itemA.isComplete === itemB.isComplete) ? 0 : itemA.isComplete ? 1 : -1;
+      })
+    }
+  }
+
+
+  startTouchTimer() {}
+
+  endTouchTimer() {}
 }
