@@ -13,22 +13,20 @@
   <div class="dash-background">
     <div class="dash-background-content">
       <app-dash-header></app-dash-header>
+      <div class="bottom-actions">
+        <button mat-mini-fab color="primary">
+          <mat-icon>home</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" (click)="drawer.open()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
   <div class="content">
-    <div class="routed">
-      <router-outlet></router-outlet>
-    </div>
-    <div class="bottom-actions">
-      <button mat-mini-fab color="accent">
-        <mat-icon>home</mat-icon>
-      </button>
-      <button mat-fab color="accent" class="mb-2">
-        <mat-icon>add</mat-icon>
-      </button>
-      <button mat-mini-fab color="accent" (click)="drawer.open()">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>

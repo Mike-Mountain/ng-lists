@@ -8,10 +8,8 @@
         matRipple
         matRippleColor="primary"
         (change)="updateItemStatus(item, $event)"
-        (touchstart)="startTouchTimer()"
-        (touchend)="endTouchTimer()"
       >
-        {{item.name}}
+        <span [class.checked]="item.isComplete">{{item.name}}</span>
       </mat-checkbox>
     </ng-container>
   </div>
@@ -20,7 +18,7 @@
       <mat-label>Add Item</mat-label>
       <input matInput type="text" class="w-100" [(ngModel)]="newItem">
     </mat-form-field>
-    <button mat-raised-button color="accent" class="w-10 h-80 flex-center" [disabled]="!newItem" (click)="addItem()">
+    <button mat-raised-button color="accent" class="add-item-button" [disabled]="!newItem" (click)="addItem()">
       <mat-icon>add</mat-icon>
     </button>
   </div>

@@ -13,8 +13,6 @@ export class ListDetailsComponent implements OnInit {
 
   public list: List | undefined;
   public newItem = '';
-  private timer$ = timer(1000);
-  private time = 0;
 
   constructor(private route: ActivatedRoute,
               private listsQuery: ListsQuery) { }
@@ -46,9 +44,4 @@ export class ListDetailsComponent implements OnInit {
       })
     }
   }
-
-
-  startTouchTimer() {}
-
-  endTouchTimer() {}
 }

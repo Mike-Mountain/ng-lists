@@ -1,1 +1,12 @@
+.add-item-button {
+  width: 10%;
+  height: 3.5rem;
+  border-bottom-right-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.checked {
+  color: darkgrey;
+}
