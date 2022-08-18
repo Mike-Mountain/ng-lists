@@ -1,4 +1,5 @@
 .display-card {
+  position: relative;
   background: var(--accent);
   color: white;
   display: grid;
@@ -20,4 +21,23 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-around;
+}
+
+.delete-button {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .mat-button-wrapper {
+    line-height: 18px;
+  }
+  .mat-icon {
+    height: 18px;
+    width: 18px;
+    font-size: 18px;
+  }
 }

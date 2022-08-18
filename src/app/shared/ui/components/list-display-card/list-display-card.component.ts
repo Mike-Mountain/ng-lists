@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MaterialModule} from "../../../../modules";
 import {Group, List} from "../../../data-access";
@@ -13,6 +13,7 @@ import {Group, List} from "../../../data-access";
 export class ListDisplayCardComponent implements OnInit, OnChanges {
 
   @Input() data: List | Group | undefined | null;
+  @Output() delete = new EventEmitter<boolean>();
   public group: Group | undefined;
   public list: List | undefined;
   public date: Date = new Date();
@@ -34,4 +35,9 @@ export class ListDisplayCardComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
+  deleteList(event: Event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    this.delete.emit(true);
+  }
 }

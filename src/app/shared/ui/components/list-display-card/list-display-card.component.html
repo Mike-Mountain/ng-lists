@@ -1,4 +1,7 @@
 <mat-card *ngIf="data" class="display-card">
+  <button mat-mini-fab class="delete-button" color="primary" (click)="deleteList($event)">
+    <mat-icon>delete</mat-icon>
+  </button>
   <img alt="list icon" [src]="data.icon ? data.icon : 'assets/images/default_icon.jpg'" class="list-icon">
   <div class="details">
     <h1 class="title">{{data.name}}</h1>
