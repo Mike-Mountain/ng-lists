@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
-import {FirebaseAuthService} from "../../../../shared";
 import {Router} from "@angular/router";
 import {LoadingService} from "../../../../shared/ui/services/loading.service";
 
@@ -14,7 +13,6 @@ export class RegisterComponent implements OnInit {
   public form: UntypedFormGroup | undefined;
 
   constructor(private fb: UntypedFormBuilder,
-              private firebaseAuth: FirebaseAuthService,
               private router: Router,
               private loadingService: LoadingService) {
   }
@@ -35,9 +33,6 @@ export class RegisterComponent implements OnInit {
       }
       this.loadingService.openLoader();
       const {email, username, password} = this.form.value;
-      this.firebaseAuth.register(email, username, password).subscribe(() => {
-        this.router.navigate(['/']).then(() => this.loadingService.closeLoader());
-      })
     }
   }
 

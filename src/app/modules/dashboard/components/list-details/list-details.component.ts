@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {List, ListItem, ListsQuery} from "../../../../shared";
 import {MatCheckboxChange} from "@angular/material/checkbox";
-import {interval, Observable, timer} from "rxjs";
 
 @Component({
   selector: 'app-list-details',
