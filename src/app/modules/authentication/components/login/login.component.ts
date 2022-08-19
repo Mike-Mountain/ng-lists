@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {LoadingService} from "../../../../shared/ui/services/loading.service";
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: UntypedFormBuilder,
               private router: Router,
+              private authService: AuthenticationService,
               private loadingService: LoadingService) { }
 
   ngOnInit(): void {
@@ -26,6 +28,10 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.form) {
       this.loadingService.openLoader();
+      const {email, password} = this.form.value;
+      this.authService.login(email, password).subscribe(() => {
+        this.router.navigate(['/']).then(() => this.loadingService.closeLoader());
+      })
     }
   }
 }

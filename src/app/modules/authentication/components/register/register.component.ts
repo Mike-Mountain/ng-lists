@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {LoadingService} from "../../../../shared/ui/services/loading.service";
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: UntypedFormBuilder,
               private router: Router,
+              private authService: AuthenticationService,
               private loadingService: LoadingService) {
   }
 
@@ -32,7 +34,10 @@ export class RegisterComponent implements OnInit {
         alert('Passwords do not match!')
       }
       this.loadingService.openLoader();
-      const {email, username, password} = this.form.value;
+      const {username, email, password} = this.form.value;
+      this.authService.register(username, email, password).subscribe(() => {
+        this.router.navigate(['/']).then(() => this.loadingService.closeLoader());
+      })
     }
   }
 

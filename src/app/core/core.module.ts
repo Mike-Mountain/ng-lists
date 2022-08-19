@@ -8,6 +8,7 @@ import {AkitaNgDevtools} from "@datorama/akita-ngdevtools";
 import {AkitaNgRouterStoreModule} from "@datorama/akita-ng-router-store";
 import {MaterialModule} from "../modules";
 import { DashHeaderComponent } from './components/dash-header/dash-header.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [LayoutComponent, DashHeaderComponent],
@@ -17,14 +18,16 @@ import { DashHeaderComponent } from './components/dash-header/dash-header.compon
     BrowserAnimationsModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
   ],
   exports: [
     LayoutComponent,
     AppRoutingModule,
     BrowserAnimationsModule,
     AkitaNgDevtools,
-    AkitaNgRouterStoreModule
+    AkitaNgRouterStoreModule,
+    HttpClientModule,
   ]
 })
 export class CoreModule { }

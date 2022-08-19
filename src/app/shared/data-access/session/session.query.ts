@@ -10,6 +10,6 @@ export class SessionQuery extends Query<Session> {
   }
 
   isLoggedIn() {
-    return this.store.getValue().user;
+    return this.store.getValue().token;
   }
 }
