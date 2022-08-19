@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {List, ListItem, ListsQuery} from "../../../../shared";
+import {List, ListItem, ListQuery} from "../../../../shared";
 import {MatCheckboxChange} from "@angular/material/checkbox";
 
 @Component({
@@ -14,7 +14,7 @@ export class ListDetailsComponent implements OnInit {
   public newItem = '';
 
   constructor(private route: ActivatedRoute,
-              private listsQuery: ListsQuery) { }
+              private listsQuery: ListQuery) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

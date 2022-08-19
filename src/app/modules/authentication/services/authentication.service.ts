@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
-import {tap} from "rxjs";
+import {switchMap, tap} from "rxjs";
 import {SessionService} from "../../../shared";
 
 
@@ -14,21 +14,25 @@ export class AuthenticationService {
   }
 
   login(identifier: string, password: string) {
-    return this.http.post<any>(`${environment.apiUrl}/auth/local`, {
+    return this.http.post<any>(`${environment.apiUrl}/auth/local?populate=*`, {
       identifier,
       password
     }).pipe(
-      tap(session => this.sessionService.login({user: session.user, token: session.jwt}))
+      tap(session => this.sessionService.saveToken(session.token)),
+      switchMap((authResponse: any) => this.http.get<any>(`${environment.apiUrl}/users/${authResponse.user.id}?populate=*`)),
+      tap(session => this.sessionService.login(session.user))
     );
   }
 
   register(username: string, email: string, password: string) {
-    return this.http.post<any>(`${environment.apiUrl}/auth/local/register`, {
+    return this.http.post<any>(`${environment.apiUrl}/auth/local/register?populate=*`, {
       username,
       email,
       password
     }).pipe(
-      tap(session => this.sessionService.login({user: session.data.user, token: session.data.jwt}))
+      tap(session => this.sessionService.saveToken(session.token)),
+      switchMap((authResponse: any) => this.http.get<any>(`${environment.apiUrl}/users/${authResponse.user.id}?populate=*`)),
+      tap(session => this.sessionService.login(session.user))
     );
   }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {Group, GroupsService, List, ListsService, SessionQuery} from "../../../../shared";
+import {Group, GroupsService, List, ListService, SessionQuery} from "../../../../shared";
 import {Observable, tap} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 
@@ -20,20 +20,14 @@ export class DashboardContainerComponent implements OnInit {
   }
 
   constructor(private sessionQuery: SessionQuery,
-              private listService: ListsService,
+              private listService: ListService,
               private groupsService: GroupsService,
               private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.sessionQuery.select('user').subscribe(user => {
-      let groups: string[] = [];
-      if (user.groupsMember) {
-        groups = [...user.groupsMember, ...groups]
-      }
-      if (user.groupsCreated) {
-        groups = [...user.groupsCreated, ...groups]
-      }
+    this.sessionQuery.select(session => session.user).subscribe(user => {
+      console.log(user);
     })
   }
 
