@@ -1,4 +1,4 @@
-import {CreatedBy} from "../models/created-by.model";
+import { CreatedBy } from '../models/created-by.model';
 
 export interface List {
   id: string;
@@ -8,7 +8,7 @@ export interface List {
   createdOn: any;
   group: string;
   editors: string[];
-  items: ListItem[];
+  listItems: ListItem[];
 }
 
 export interface ListItem {

@@ -5,11 +5,11 @@
   <img alt="list icon" [src]="data.icon ? data.icon : 'assets/images/default_icon.jpg'" class="list-icon">
   <div class="details">
     <h1 class="title">{{data.name}}</h1>
-    <p class="items" *ngIf="list">{{list.items.length}} items in this list</p>
+    <p class="items" *ngIf="list">{{list.listItems.length}} items in this list</p>
     <p class="items" *ngIf="group">{{group.members.length}} users in this group</p>
   </div>
   <div class="created_details">
     <small class="date">{{date | date : 'hh:mm a - d MMM y'}}</small>
-    <small class="creator" *ngIf="group">created by {{group.createdBy.username}}</small>
+    <small class="creator" *ngIf="group">created by {{group.user.username}}</small>
   </div>
 </mat-card>

@@ -1,9 +1,12 @@
+import { Group } from '../groups';
+import { List } from '../lists';
+
 export interface Session {
   user: User;
   token: string;
 }
 
-export interface User {
+export class User {
   id: string;
   email: string;
   username: string;
@@ -12,8 +15,23 @@ export interface User {
   createdAt: Date;
   provider: string;
   updatedAt: Date;
-  groupsCreated: string[];
-  groupsMember: string[];
-  listsCreated: string[];
-  listsEditor: string[];
+  groupsCreated: Group[];
+  groupsMember: Group[];
+  listsCreated: List[];
+  listsEditor: List[];
+
+  constructor(params: User) {
+    (this.id = params.id),
+      (this.email = params.email),
+      (this.username = params.username),
+      (this.blocked = params.blocked),
+      (this.confirmed = params.confirmed),
+      (this.createdAt = params.createdAt),
+      (this.provider = params.provider),
+      (this.updatedAt = params.updatedAt),
+      (this.groupsCreated = params.groupsCreated || []),
+      (this.groupsMember = params.groupsMember || []),
+      (this.listsCreated = params.listsCreated || []),
+      (this.listsEditor = params.listsEditor || []);
+  }
 }

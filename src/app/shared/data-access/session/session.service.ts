@@ -1,17 +1,16 @@
-import {Injectable} from '@angular/core';
-import {SessionStore} from './session.store';
-import {Session, User} from "./session.model";
+import { Injectable } from '@angular/core';
+import { SessionStore } from './session.store';
+import { Session, User } from './session.model';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class SessionService {
-  constructor(private sessionStore: SessionStore) {
-  }
+  constructor(private sessionStore: SessionStore) {}
 
   saveToken(token: string) {
-    this.sessionStore.update({token})
+    this.sessionStore.update({ token });
   }
 
   login(user: User) {
-    this.sessionStore.update({user});
+    this.sessionStore.update({ user });
   }
 }

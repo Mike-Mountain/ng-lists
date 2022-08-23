@@ -1,9 +1,9 @@
-import {CreatedBy} from "../models/created-by.model";
+import { CreatedBy } from '../models/created-by.model';
 
 export interface Group {
   id: string;
   name: string;
-  createdBy: CreatedBy;
+  user: CreatedBy;
   createdOn: any;
   icon: string;
   lists: string[];

@@ -1,4 +1,4 @@
 export interface CreatedBy {
-  userId: string;
+  id: string;
   username: string;
 }

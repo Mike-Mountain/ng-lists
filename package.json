@@ -24,6 +24,7 @@
     "@datorama/akita-ng-entity-service": "^7.0.0",
     "@datorama/akita-ng-router-store": "^7.0.0",
     "bluebird": "^3.7.2",
+    "prettier": "^2.7.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
