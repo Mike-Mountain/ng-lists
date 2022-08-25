@@ -6,13 +6,15 @@ import { ListDetailsComponent } from './components/list-details/list-details.com
 import {RouterModule} from "@angular/router";
 import {MaterialModule} from "../material/material.module";
 import {FormsModule} from "@angular/forms";
+import { CreateListComponent } from './components/create-list/create-list.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardContainerComponent,
-    ListDetailsComponent
+    ListDetailsComponent,
+    CreateListComponent
   ],
     imports: [
         CommonModule,
