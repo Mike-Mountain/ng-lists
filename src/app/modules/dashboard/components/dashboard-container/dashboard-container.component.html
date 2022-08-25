@@ -2,39 +2,66 @@
   <div class="mb-1">
     <h1 class="mb-1">My Lists:</h1>
     <app-spinner [isSingleUse]="true" [isLoading]="loadingStates.listsCreated" size="medium">
-      <ng-container *ngFor="let list of listsCreated | async">
-        <a class="my-2 display-inline-block w-100" [routerLink]="'/list/' + list.id">
-          <app-list-display-card
-            (delete)="deleteList(list, confirmDeleteTmpl)"
-            [data]="list"
-          ></app-list-display-card>
-        </a>
+      <ng-container *ngIf="listsCreated | async as lists">
+        <ng-container *ngIf="lists.length > 0; else noListsCreated">
+          <ng-container *ngFor="let list of lists">
+            <a class="my-2 display-inline-block w-100" [routerLink]="'/list/' + list.id">
+              <app-list-display-card
+                (delete)="deleteList(list, confirmDeleteTmpl)"
+                [data]="list"
+              ></app-list-display-card>
+            </a>
+          </ng-container>
+        </ng-container>
+        <ng-template #noListsCreated>
+          <div class="w-100 flex-center flex-column">
+            <p class="text-center my-2">You haven't created any lists yet. create one to get started</p>
+            <button mat-raised-button color="accent">Create a list</button>
+          </div>
+        </ng-template>
       </ng-container>
     </app-spinner>
   </div>
 
   <div class="mt-4 mb-1">
     <h1 class="mb-1">Group Lists:</h1>
-    <app-spinner [isSingleUse]="true" [isLoading]="loadingStates.listsCreated" size="medium">
-      <ng-container *ngFor="let list of listsEditor | async">
-        <a class="my-2 display-inline-block w-100" [routerLink]="'/list/' + list.id">
-          <app-list-display-card
-            [data]="list"
-          ></app-list-display-card>
-        </a>
+    <app-spinner [isSingleUse]="true" [isLoading]="loadingStates.listsEditor" size="medium">
+      <ng-container *ngIf="listsEditor | async as lists">
+        <ng-container *ngIf="lists.length > 0; else noListsEditor">
+          <ng-container *ngFor="let list of lists">
+            <a class="my-2 display-inline-block w-100" [routerLink]="'/list/' + list.id">
+              <app-list-display-card
+                [data]="list"
+              ></app-list-display-card>
+            </a>
+          </ng-container>
+        </ng-container>
+        <ng-template #noListsEditor>
+          <p class="text-center my-2">You don't have any group lists.</p>
+        </ng-template>
       </ng-container>
     </app-spinner>
   </div>
 
   <div class="mt-4 mb-5">
     <h1 class="mb-1">Groups:</h1>
-    <app-spinner [isSingleUse]="true" [isLoading]="loadingStates.listsCreated" size="medium">
-      <ng-container *ngFor="let group of groups | async">
-        <a class="my-2 display-inline-block w-100" [routerLink]="'/group/' + group.id">
-          <app-list-display-card
-            [data]="group"
-          ></app-list-display-card>
-        </a>
+    <app-spinner [isSingleUse]="true" [isLoading]="loadingStates.groups" size="medium">
+      <ng-container *ngIf="groups | async as groupsArray">
+        <ng-container *ngIf="groupsArray.length > 0; else noGroups">
+          <ng-container *ngFor="let group of groupsArray">
+            <a class="my-2 display-inline-block w-100" [routerLink]="'/group/' + group.id">
+              <app-list-display-card
+                [data]="group"
+              ></app-list-display-card>
+            </a>
+          </ng-container>
+        </ng-container>
+        <ng-template #noGroups>
+          <div class="w-100 flex-center flex-column">
+            <p class="text-center my-2">You aren't part of any groups yet. Create one to get started</p>
+            <button mat-raised-button color="accent">Create a group</button>
+          </div>
+        </ng-template>
       </ng-container>
     </app-spinner>
   </div>

@@ -5,7 +5,7 @@ import { List } from './list.model';
 export interface ListState extends EntityState<List> {}
 
 @Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'list' })
+@StoreConfig({ name: 'lists' })
 export class ListStore extends EntityStore<ListState> {
 
   constructor() {

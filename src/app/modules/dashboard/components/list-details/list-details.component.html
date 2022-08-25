@@ -1,4 +1,4 @@
-<section class="list-details" *ngIf="list">
+<section class="list-details" *ngIf="list$ | async as list">
   <div class="h-90">
     <h1 class="text-center">List Items</h1>
     <ng-container *ngFor="let item of list.listItems">
@@ -7,7 +7,8 @@
         class="list-item-check"
         matRipple
         matRippleColor="primary"
-        (change)="updateItemStatus(item, $event)"
+        [checked]="item.isComplete"
+        (change)="updateItemStatus(list, item, $event)"
       >
         <span [class.checked]="item.isComplete">{{item.name}}</span>
       </mat-checkbox>
@@ -18,7 +19,7 @@
       <mat-label>Add Item</mat-label>
       <input matInput type="text" class="w-100" [(ngModel)]="newItem">
     </mat-form-field>
-    <button mat-raised-button color="accent" class="add-item-button" [disabled]="!newItem" (click)="addItem()">
+    <button mat-raised-button color="accent" class="add-item-button" [disabled]="!newItem" (click)="addItem(list)">
       <mat-icon>add</mat-icon>
     </button>
   </div>

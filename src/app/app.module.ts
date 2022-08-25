@@ -5,6 +5,7 @@ import { NG_ENTITY_SERVICE_CONFIG } from '@datorama/akita-ng-entity-service';
 import { CoreModule } from './core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,7 +13,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
   providers: [
     {
       provide: NG_ENTITY_SERVICE_CONFIG,
-      useValue: { baseUrl: 'https://jsonplaceholder.typicode.com' },
+      useValue: { baseUrl: environment.apiUrl },
     },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
